@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+app.set('view engine', 'ejs')
 // -------------- ROUTES -------------- //
 
 // Home (Root) route
 app.get('/', (req, res) => {
-    res.send('Hoome Page')
+    res.render('index')
 });
 
 app.listen(PORT, ()=>{
