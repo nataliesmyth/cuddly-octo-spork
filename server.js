@@ -2,15 +2,16 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 
-const connectionString = 'mongodb://localhost/blog';
 const authorsController = require('./controllers/authors.js');
+const articlesController = require('./controllers/articles');
+const connectionString = 'mongodb://localhost/blog';
 const bodyParser = require('body-parser');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
 
 app.use('/authors', authorsController);
+app.use('/articles', articlesController);
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
-
 
 mongoose.connect(connectionString, {
     useNewUrlPArser: true,
